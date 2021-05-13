@@ -52,6 +52,13 @@ public class Pacote {
 		this.preco = preco;
 	}
 	
+	
+	
+	public Pacote(String descricao, Integer qtdDias) {
+		this.descricao = descricao;
+		this.qtdDias = qtdDias;
+	}
+
 	public Pacote() {
 	}
 
