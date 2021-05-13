@@ -29,7 +29,7 @@ public class Main {
 		CidadeDAO cidadeDAO = new CidadeDAOImpl(em);
 		ClienteDAO cliDao = new ClienteDAOImpl(em);
 		PacoteDAO pacDao = new PacoteDAOImpl(em);
-		TransporteDAO traDao = new TransporteDAOImpl(em);
+		TransporteDAO traDao = new TransporteDAOImpl(em); 
 		
 		/*//foreach
 		System.out.println("--------------------------------------------------------");
