@@ -22,6 +22,20 @@ public class ReservaDAOImpl extends GenericDAOImpl<Reserva,Integer> implements R
 		
 	}
 
+	@Override
+	public List<Reserva> buscarPorNomeCliente(String nome) {
+		return em.createNamedQuery("Reserva.porNomeCliente", Reserva.class)
+				.setParameter("n", "%" + nome + "%")
+					.getResultList();
+	}
+
+	@Override
+	public List<Reserva> buscarPorDiasNamedQuery(int dias) {
+		return em.createNamedQuery("Reserva.porDias", Reserva.class)
+				.setParameter("d", dias)
+					.getResultList();
+	}
+
 	
 	
 }

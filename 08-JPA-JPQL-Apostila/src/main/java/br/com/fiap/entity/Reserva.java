@@ -11,10 +11,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+@NamedQueries({
+	
+	
+	//Pesquisar reserva por parte do nome do cliente
+	@NamedQuery(name = "Reserva.porNomeCliente", query="select r from Reserva r where r.cliente.nome like :n"),
+	
+	//Pesquisar reserva por numero de dias igual
+	@NamedQuery(name = "Reserva.porDias", query = "select r from Reserva r where r.numeroDias = :d")
+	
+})
 
 @Entity
 @Table(name="TB_EAD_RESERVA")

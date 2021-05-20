@@ -8,4 +8,10 @@ public interface ReservaDAO extends GenericDAO<Reserva,Integer>{
 
 	List<Reserva> buscaPorDias(int dias);
 	
+	List<Reserva> buscarPorNomeCliente(String nome);
+	
+	List<Reserva> buscarPorDiasNamedQuery(int dias);
+	
+	
+	
 }

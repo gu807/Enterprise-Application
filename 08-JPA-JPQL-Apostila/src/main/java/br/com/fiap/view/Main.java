@@ -1,19 +1,17 @@
 package br.com.fiap.view;
 
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 import br.com.fiap.dao.CidadeDAO;
 import br.com.fiap.dao.ClienteDAO;
 import br.com.fiap.dao.PacoteDAO;
+import br.com.fiap.dao.ReservaDAO;
 import br.com.fiap.dao.TransporteDAO;
 import br.com.fiap.dao.impl.CidadeDAOImpl;
 import br.com.fiap.dao.impl.ClienteDAOImpl;
 import br.com.fiap.dao.impl.PacoteDAOImpl;
+import br.com.fiap.dao.impl.ReservaDAOImpl;
 import br.com.fiap.dao.impl.TransporteDAOImpl;
 import br.com.fiap.entity.Transporte;
 import br.com.fiap.singleton.EntityManagerFactorySingleton;
@@ -30,6 +28,7 @@ public class Main {
 		ClienteDAO cliDao = new ClienteDAOImpl(em);
 		PacoteDAO pacDao = new PacoteDAOImpl(em);
 		TransporteDAO traDao = new TransporteDAOImpl(em); 
+		ReservaDAO resDao = new ReservaDAOImpl(em);
 		
 		/*//foreach
 		System.out.println("--------------------------------------------------------");
@@ -83,9 +82,24 @@ public class Main {
 		
 		System.out.println(cliDao.quantidadePorEstado("BA"));
 		
+		System.out.println("--------------------------------------------------------");
+
 		Transporte t = traDao.pesquisar(1);
 		
 		System.out.println(pacDao.somaPacoteTransporte(t));
+		
+		System.out.println("--------------------------------------------------------");
+		
+		resDao.buscarPorNomeCliente("a").forEach(r -> System.out.println(r.getCliente().getNome() ));
+		
+		System.out.println("--------------------------------------------------------");
+
+		resDao.buscarPorDiasNamedQuery(10).forEach(r -> System.out.println(r.getCliente().getNome() + " - " + r.getNumeroDias()));
+
+		System.out.println("--------------------------------------------------------");
+
+		pacDao.buscarPorQtdDiasMaiorEPrecoMenor(5, 10000).forEach(p -> System.out.println(p));
+		
 		
 		//fechando a conexão
 		em.close();

@@ -58,4 +58,13 @@ public class PacoteDAOImpl extends GenericDAOImpl<Pacote,Integer> implements Pac
 				.getSingleResult();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Pacote> buscarPorQtdDiasMaiorEPrecoMenor(int dias, float preco) {
+		return em.createNativeQuery("SELECT * FROM TB_EAD_PACOTE WHERE QT_DIAS > :d AND VL_PACOTE < :p", Pacote.class)
+				.setParameter("d", dias)
+				.setParameter("p", preco)
+					.getResultList();
+	}
+
 }
